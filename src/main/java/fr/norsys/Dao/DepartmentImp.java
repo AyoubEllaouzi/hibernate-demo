@@ -22,7 +22,8 @@ public class DepartmentImp implements IDepartment {
             transaction = session.beginTransaction();
 
             department.getEmployees().add(employee);
-            //employee.setDepartment(department);
+
+            employee.setDepartment(department);
 
             session.save(employee); // Or session.update(employee) if employee already exists
             transaction.commit();
@@ -60,6 +61,11 @@ public class DepartmentImp implements IDepartment {
 
     @Override
     public void deleteDepartment(Department department) {
+        if (department == null) {
+            System.out.println("Department is null, cannot delete.");
+            return;
+        }
+
         Session session = null;
         Transaction transaction = null;
 
@@ -78,6 +84,7 @@ public class DepartmentImp implements IDepartment {
             HibernateUtil.closeSession(session);
         }
     }
+
 
 
     @Override

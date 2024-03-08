@@ -20,23 +20,10 @@ public class Main {
 
 
         // Create Employee instances
-        Employee employee1 = new Employee("John", "Doe", "john@example.com");
-        Employee employee2 = new Employee("Jane", "Smith", "jane@example.com");
-        Employee employee3 = new Employee("Alice", "Johnson", "alice@example.com");
+        Employee employee1 = new Employee("ayoub", "ellaouzi", "Ayoub@example.com");
+        Employee employee2 = new Employee("amine", "el", "khaid@example.com");
+        Employee employee3 = new Employee("khalid", "em", "khalid@example.com");
 
-
-
-        List<Employee> empList1 = new ArrayList<>();
-        List<Employee> empList2 = new ArrayList<>();
-        List<Employee> empList3 = new ArrayList<>();
-
-        empList1.add(employee1);
-        empList2.add(employee2);
-        empList3.add(employee3);
-
-        department1.setEmployees(empList1);
-        department2.setEmployees(empList2);
-        department3.setEmployees(empList3);
 
         // Save employees
         employeeDao.save(employee1);
@@ -48,5 +35,25 @@ public class Main {
         departmentDao.save(department2);
         departmentDao.save(department3);
 
+        //add Employees To Departments
+        departmentDao.addEmployeeToDepartment(employee1,department1);
+        departmentDao.addEmployeeToDepartment(employee2,department2);
+        departmentDao.addEmployeeToDepartment(employee3,department3);
+
+        Employee e = employeeDao.findById(38L);// change ths id
+        Department d = departmentDao.findDepartmentByEmployee(e);
+
+        // RECHERCHER TOUS LES EMPLOYÉS
+        List<Employee> employeeList =employeeDao.findEmployeesByDepartment(d);
+        for (Employee emp : employeeList){
+            System.out.println(emp.toString());
+        }
+        //SUPPRIMER UN EMPLOYÉ
+        employeeDao.deleteEmployee(e);
+        //SUPPRIMER UN DÉPARTEMENT.
+        departmentDao.deleteDepartment(d);
+
+
+     ;
     }
 }

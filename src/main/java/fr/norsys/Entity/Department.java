@@ -23,7 +23,7 @@ public class Department {
     }
 
     public Department() {
-
+        this.employees = new ArrayList<>();
     }
 
     public Long getId() {
