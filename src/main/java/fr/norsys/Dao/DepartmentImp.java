@@ -22,7 +22,7 @@ public class DepartmentImp implements IDepartment {
             transaction = session.beginTransaction();
 
             department.getEmployees().add(employee);
-            employee.setDepartment(department);
+            //employee.setDepartment(department);
 
             session.save(employee); // Or session.update(employee) if employee already exists
             transaction.commit();

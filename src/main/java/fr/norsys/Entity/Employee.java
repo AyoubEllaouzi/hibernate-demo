@@ -12,9 +12,7 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "department_id")
+    @ManyToOne
     private Department department;
 
     public Employee() {
@@ -58,11 +56,4 @@ public class Employee {
         this.email = email;
     }
 
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
 }

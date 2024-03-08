@@ -13,13 +13,17 @@ public class Department {
 
     private String name;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "department",cascade = CascadeType.ALL)
     private List<Employee> employees;
 
 
     public Department(String name) {
         this.name = name;
         this.employees = new ArrayList<>();
+    }
+
+    public Department() {
+
     }
 
     public Long getId() {
@@ -45,4 +49,5 @@ public class Department {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
+
 }
